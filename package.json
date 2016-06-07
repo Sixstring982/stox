@@ -1,0 +1,32 @@
+{
+  "name": "stox",
+  "version": "0.0.1",
+  "description": "react-redux insider trading game",
+  "main": "src/app.tsx",
+  "scripts": {
+    "webpack": "webpack",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com//Sixstring982/stox.git"
+  },
+  "keywords": [
+    "stock",
+    "insider",
+    "trading",
+    "react",
+    "redux"
+  ],
+  "author": "sixstring982",
+  "license": "MIT",
+  "devDependencies": {
+    "react-dom": "~15.1.0",
+    "react": "~15.1.0",
+    "redux": "~3.5.2",
+    "react-redux": "~4.4.5",
+    "http-server": "~0.9.0",
+    "ts-loader": "~0.8.2",
+    "jasmine-core": "~2.4.1"
+  }
+}

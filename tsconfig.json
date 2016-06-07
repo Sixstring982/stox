@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "react"
+  },
+  "files": [
+    "src/app.tsx"
+  ]
+}

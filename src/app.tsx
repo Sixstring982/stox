@@ -7,11 +7,13 @@ import { Provider } from "react-redux";
 
 import Reducers from "./reducers";
 
+import App from "./components/App.tsx";
+
 const store = createStore(Reducers);
 
 render(
   <Provider store={store}>
-    <h1>hello, world</h1>
+    <App />
   </Provider>,
   document.getElementById('stox-root')
 );

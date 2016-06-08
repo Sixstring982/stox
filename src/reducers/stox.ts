@@ -18,6 +18,10 @@ class State {
     return this._market.getSymbols();
   }
 
+  getSymbolsAndValues(): Array<[string, number]> {
+    return this._market.getSymbolsAndValues();
+  }
+
   getCurrentValues(): Array<number> {
     return this._market.getValues(this._selected_stock);
   }

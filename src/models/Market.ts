@@ -32,6 +32,17 @@ export default class Market {
         return symbols;
     }
 
+    getSymbolsAndValues(): Array<[string, number]> {
+        const symbols = [];
+
+        for (let i = 0; i < this._stocks.length; i++) {
+            symbols.push([this._stocks[i].symbol,
+            this._stocks[i].getValue(this._stocks[i].value_count - 1)]);
+        }
+
+        return symbols;
+    }
+
     advance(): Market {
         let new_stocks = [];
         for (let i = 0; i < this._stocks.length; i++) {

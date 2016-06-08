@@ -19,15 +19,9 @@ export default class StockView extends React.Component<StockViewPropTypes, any> 
     }
 
     render() {
-        let titleElement = null;
-        if (this.props.chartTitle !== null && this.props.chartTitle !== undefined) {
-            titleElement = <span className="card-title">{this.props.chartTitle}</span>
-        }
-
         return (
             <div className={`card ${this.props.color}`}>
               <div className={`card-content ${this.props.textColor}-text`}>
-                {titleElement}
                 <div id={`chart-${this.props.id}`}></div>
               </div>
             </div>
@@ -35,15 +29,24 @@ export default class StockView extends React.Component<StockViewPropTypes, any> 
     }
 
     private renderChart() {
-        const props = this.props;
         const chartOptions = {
             chart: {
-                renderTo: `chart-${props.id}`,
+                type: 'areaspline',
+                renderTo: `chart-${this.props.id}`,
+            },
+            title: {
+                text: this.props.chartTitle
+            },
+            yAxis: {
+                title: {
+                    text: 'Price ($)'
+                },
             },
             series: [{
-                data: props.values
+                name: this.props.chartTitle,
+                data: this.props.values
             },],
-        };  
+        };
         HighCharts.chart(chartOptions);
     }
 }

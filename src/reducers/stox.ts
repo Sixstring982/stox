@@ -14,6 +14,10 @@ export class State {
     return this._selected_stock;
   }
 
+  getCurrentSymbol(): string {
+    return this._market.getStock(this._selected_stock).symbol;
+  }
+
   getSymbols(): Array<string> {
     return this._market.getSymbols();
   }

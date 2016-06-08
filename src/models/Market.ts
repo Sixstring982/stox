@@ -29,6 +29,10 @@ export default class Market {
         return values;
     }
 
+    getStock(stock_idx: number): Stock {
+        return this._stocks[stock_idx];
+    }
+
     getSymbols(): Array<string> {
         const symbols = [];
 
@@ -83,7 +87,8 @@ export default class Market {
 
         stocks.push(new Stock("BIG", 200.0, null),
                     new Stock("BMI", 64.0,  null),
-                    new Stock("FOO", 28.0,  null));
+                    new Stock("FOO", 28.0,  null),
+                    new Stock("PNPL", 80.0, null));
 
         return stocks;
     }

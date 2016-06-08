@@ -5,7 +5,7 @@ const mapStateToProps = state => ({
     id: 0,
     color: "white",
     textColor: "black",
-    chartTitle: "Stock View",
+    chartTitle: state.stox.getCurrentSymbol(),
     values: state.stox.getCurrentValues(),
 });
 

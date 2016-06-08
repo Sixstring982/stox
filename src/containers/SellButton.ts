@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import Button from "../components/Button.tsx";
 
 const mapStateToProps = state => ({
-  text: "+1 Share",
-  color: "green",
-  enabled: state.stox.money >= state.stox.getCurrentValue(),
+  text: "-1 Share",
+  color: "red",
+  enabled: state.stox.getCurrentShareCount() > 0,
 });
 
 const mapDispatchToProps = dispatch => ({
   onclick: () => {
-    dispatch(Action.buyCurrentShare());
+    dispatch(Action.sellCurrentShare());
   }
 });
 

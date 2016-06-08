@@ -88,9 +88,9 @@ export class State {
       let new_shares = [];
       for (let i = 0; i < this._shares.length; i++) {
         if (i === this._selected_stock) {
-          new_shares[i] = this._shares[i] + 1;
+          new_shares.push(this._shares[i] + 1);
         } else {
-          new_shares[i] = this._shares[i];
+          new_shares.push(this._shares[i]);
         }
       }
       return new State(this._market, this._selected_stock,
@@ -100,6 +100,25 @@ export class State {
     return new State(this._market, this._selected_stock,
                      this._money, this._shares,
                      [`Cannot afford one share of ${this.getCurrentSymbol()}.`]);
+  }
+
+  sellCurrentShare(): State {
+    if (this.getCurrentShareCount() > 0) {
+      let new_shares = [];
+      for (let i = 0; i < this._shares.length; i++) {
+        if (i === this._selected_stock) {
+          new_shares.push(this._shares[i] - 1);
+        } else {
+          new_shares.push(this._shares[i]);
+        }
+      }
+      return new State(this._market, this._selected_stock,
+                       this._money + this.getCurrentValue(), new_shares,
+                       [`Sold one share of ${this.getCurrentSymbol()}.`]);
+    }
+    return new State(this._market, this._selected_stock,
+                     this._money, this._shares,
+                     [`Cannot sell ${this.getCurrentSymbol()}: not enough shares.`]);
   }
 }
 
@@ -115,6 +134,9 @@ export default (state: State = INITIAL_STATE, action: any) => {
     }
     case Action.BUY_CURRENT_SHARE: {
       return state.buyCurrentShare();
+    }
+    case Action.SELL_CURRENT_SHARE: {
+      return state.sellCurrentShare();
     }
     default: {
       return state;

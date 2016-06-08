@@ -18,3 +18,8 @@ export const BUY_CURRENT_SHARE: number = 4;
 export const buyCurrentShare = () => ({
     type: BUY_CURRENT_SHARE,
 })
+
+export const SELL_CURRENT_SHARE: number = 5;
+export const sellCurrentShare = () => ({
+    type: SELL_CURRENT_SHARE,
+})

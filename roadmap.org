@@ -11,3 +11,27 @@ the following information:
 5. Selling price of shares.
 6. Profit made if shares sold (must keep track of buying price, which
    can be an average).
+
+This might be made easier if an interface were returned from the
+Market with all of that information.
+
+
+** TODO Rumors
+
+This is the insider trading portion of the game. Without this, it'll
+be a little more boring.
+
+This may require tweaking of the way that the stock numbers are
+generated. They'll probably need to tend towards the average more than
+they do at the moment.
+
+
+** TODO Styling
+*** TODO Chart styling
+
+The chart already looks great, but it could look a lot better.
+
+
+** TODO Buying/Selling
+
+We can't buy or sell stuff. That's not going to work!

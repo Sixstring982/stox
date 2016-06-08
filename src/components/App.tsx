@@ -3,6 +3,7 @@ import Log from "../containers/Log.ts";
 import StockView from "../containers/StockView.ts";
 import SymbolList from "../containers/SymbolList.ts";
 import AdvanceButton from "../containers/AdvanceButton.ts";
+import MoneyLabel from "../containers/MoneyLabel.ts";
 
 interface AppPropTypes {
 
@@ -22,7 +23,20 @@ export default class App extends React.Component<AppPropTypes, any> {
             </div>
           </div>
           <div className="col s8">
-            <StockView />
+            <div className="card white">
+              <div className="card-content black-text">
+                <div className="row">
+                  <div clasName="col s12">
+                    <StockView />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col s3">
+                    <MoneyLabel />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">

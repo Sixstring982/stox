@@ -3,8 +3,6 @@ import StockView from "../components/StockView.tsx";
 
 const mapStateToProps = state => ({
     id: 0,
-    color: "white",
-    textColor: "black",
     chartTitle: state.stox.getCurrentSymbol(),
     values: state.stox.getCurrentValues(),
 });

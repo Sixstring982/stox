@@ -4,14 +4,20 @@ import Market, { StockInfo } from "../models/Market.ts";
 export class State {
   private _market: Market;
   private _selected_stock: number;
+  private _money: number;
 
-  constructor(market: Market, selected_stock: number) {
+  constructor(market: Market, selected_stock: number, money: number) {
     this._market = market;
     this._selected_stock = selected_stock;
+    this._money = money;
   }
 
   get selected_stock(): number {
     return this._selected_stock;
+  }
+
+  get money(): number {
+    return this._money;
   }
 
   getCurrentSymbol(): string {
@@ -35,15 +41,15 @@ export class State {
   }
 
   advance(): State {
-    return new State(this._market.advance(), this._selected_stock);
+    return new State(this._market.advance(), this._selected_stock, this._money);
   }
 
   setSelectedStock(selected_stock: number): State {
-    return new State(this._market, selected_stock);
+    return new State(this._market, selected_stock, this._money);
   }
 }
 
-const INITIAL_STATE = new State(new Market(null), 0);
+const INITIAL_STATE = new State(new Market(null), 0, 50.0);
 
 export default (state: State = INITIAL_STATE, action: any) => {
   switch (action.type) {

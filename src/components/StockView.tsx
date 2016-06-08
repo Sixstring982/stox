@@ -3,8 +3,6 @@ import * as HighCharts from "highcharts";
 
 interface StockViewPropTypes {
     id: number,
-    color: string,
-    textColor: string,
     chartTitle: string,
     values: Array<number>,
 }
@@ -19,13 +17,7 @@ export default class StockView extends React.Component<StockViewPropTypes, any> 
     }
 
     render() {
-        return (
-            <div className={`card ${this.props.color}`}>
-              <div className={`card-content ${this.props.textColor}-text`}>
-                <div id={`chart-${this.props.id}`}></div>
-              </div>
-            </div>
-        );
+        return <div id={`chart-${this.props.id}`}></div>;
     }
 
     private renderChart() {

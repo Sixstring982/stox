@@ -62,6 +62,13 @@ export default class Stock {
             change_percent -= (2.0 * VOLATILITY); 
         }
         const change_amount = old_price * change_percent;
-        return old_price + change_amount;
+
+        /* Truncate to two decimal points */
+        let new_value = old_price + change_amount;
+        new_value *= 100.0;
+        new_value = Math.round(new_value);
+        new_value /= 100.0;
+
+        return new_value; 
     }
 }

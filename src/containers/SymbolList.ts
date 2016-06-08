@@ -8,7 +8,7 @@ const mapStateToProps = state => {
 
     for (let i = 0; i < symbols.length; i++) {
         buttons.push({
-            title: `${symbols[i][0]}: $${symbols[i][1]}`,
+            title: `${symbols[i][0]}: $${symbols[i][1].toFixed(2)}`,
             active: (i === state.stox.selected_stock),
         });
     }

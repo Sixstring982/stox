@@ -24,7 +24,7 @@ const mapStateToProps = state => {
             icon_color,
             title: `${symbols[i].symbol}: $${symbols[i].current_value.toFixed(2)}`,
             active,
-            line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)})`,
+            line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)}%)`,
             line_two_color,
         });
     }

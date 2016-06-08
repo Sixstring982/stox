@@ -46,7 +46,7 @@ export default class Market {
             const current = this._stocks[i].getValue(this._stocks[i].value_count - 1);
             const former  = this._stocks[i].getValue(this._stocks[i].value_count - 2);
             const delta   = current - former;
-            const delta_percent = ((delta - former) / former) * 100.0;
+            const delta_percent = ((current / former) * 100.0) - 100.0;
             infos.push({
                 symbol: this._stocks[i].symbol,
                 current_value: current,

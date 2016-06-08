@@ -1,7 +1,7 @@
 import * as Action from "../actions";
-import Market from "../models/Market.ts";
+import Market, { StockInfo } from "../models/Market.ts";
 
-class State {
+export class State {
   private _market: Market;
   private _selected_stock: number;
 
@@ -18,6 +18,10 @@ class State {
     return this._market.getSymbols();
   }
 
+  getStockInfos(): Array<StockInfo> {
+    return this._market.getStockInfos();
+  }
+
   getSymbolsAndValues(): Array<[string, number]> {
     return this._market.getSymbolsAndValues();
   }
@@ -27,7 +31,7 @@ class State {
   }
 
   advance(): State {
-    return new State(this._market.advance(), this._selected_stock); 
+    return new State(this._market.advance(), this._selected_stock);
   }
 
   setSelectedStock(selected_stock: number): State {

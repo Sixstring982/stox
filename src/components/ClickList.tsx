@@ -1,6 +1,7 @@
 import * as React from "react";
 
 interface ListButton {
+    icon: string,
     title: string,
     active: boolean,
 }
@@ -13,15 +14,16 @@ interface ClickListPropTypes {
 export default class ClickList extends React.Component<ClickListPropTypes, any> {
     render() {
         return (
-           <div className="collection">
-             {this.props.buttons.map((b, i) => 
-                 <a key={i} 
-                    onClick={this.props.onClick(i)}
-                    className={`collection-item${b.active ? " active" : ""}`}>
-                    {b.title}
-                 </a>
+           <ul className="collection">
+             {this.props.buttons.map((b, i) =>
+                 <li className={`collection-item avatar${b.active ? " active" : ""}`}
+                     key={i}
+                     onClick={this.props.onClick(i)}>
+                   <i className="material-icons circle">{b.icon}</i>
+                   <span class="title">{b.title}</span>
+                 </li>
              )}
-           </div> 
+           </ul>
         );
     }
 }

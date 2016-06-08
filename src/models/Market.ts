@@ -1,5 +1,12 @@
 import Stock from "./Stock.ts";
 
+export interface StockInfo {
+    symbol: string,
+    current_value: number,
+    delta: number,
+    delta_percent: number,
+}
+
 export default class Market {
     private _stocks: Array<Stock>;
 
@@ -30,6 +37,25 @@ export default class Market {
         }
 
         return symbols;
+    }
+
+    getStockInfos(): Array<StockInfo> {
+        const infos = [];
+
+        for (let i = 0; i < this._stocks.length; i++) {
+            const current = this._stocks[i].getValue(this._stocks[i].value_count - 1);
+            const former  = this._stocks[i].getValue(this._stocks[i].value_count - 2);
+            const delta   = current - former;
+            const delta_percent = ((delta - former) / former) * 100.0;
+            infos.push({
+                symbol: this._stocks[i].symbol,
+                current_value: current,
+                delta,
+                delta_percent
+            })
+        }
+
+        return infos;
     }
 
     getSymbolsAndValues(): Array<[string, number]> {

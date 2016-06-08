@@ -3,3 +3,7 @@ node_modules
 
 # No output
 build/
+
+# Emacs backup stuff
+*~
+[#]*[#]

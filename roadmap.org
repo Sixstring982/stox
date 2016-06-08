@@ -1,0 +1,13 @@
+* Stox
+** TODO Better formatting for SymbolList.
+
+SymbolList needs to look a little better, and should ideally contain
+the following information:
+
+1. Icon, describing the current delta from yesterday.
+2. Price difference between now and yesterday.
+3. Symbol.
+4. Number of shares owned.
+5. Selling price of shares.
+6. Profit made if shares sold (must keep track of buying price, which
+   can be an average).

@@ -9,18 +9,23 @@ const mapStateToProps = state => {
     for (let i = 0; i < symbols.length; i++) {
         const active = (i === state.stox.selected_stock);
 
-        let trend_color = (symbols[i].delta >= 0 ? "green" : "red");
+        const trend_color = (symbols[i].delta >= 0 ? "green" : "red");
+        let icon_color;
+        let line_two_color;
         if (active) {
-            trend_color = "lighten-1 text-lighten-3 " + trend_color;
+            icon_color = `lighten-1 ${trend_color}`;
+            line_two_color = `text-lighten-3 ${trend_color}`;
+        } else {
+            icon_color = line_two_color = trend_color;
         }
 
         buttons.push({
             icon: symbols[i].delta >= 0 ? "trending_up" : "trending_down",
-            icon_color: trend_color,
+            icon_color,
             title: `${symbols[i].symbol}: $${symbols[i].current_value.toFixed(2)}`,
             active,
             line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)})`,
-            line_two_color: trend_color,
+            line_two_color,
         });
     }
 

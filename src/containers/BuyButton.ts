@@ -3,18 +3,18 @@ import { connect } from "react-redux";
 import Button from "../components/Button.tsx";
 
 const mapStateToProps = state => ({
-    text: "Advance",
-    color: "teal",
-    enabled: true,
+  text: "Buy",
+  color: "green",
+  enabled: state.stox.money >= state.stox.getCurrentValue(),
 });
 
 const mapDispatchToProps = dispatch => ({
-    onclick: () => {
-        dispatch(Action.advance());
-    }
+  onclick: () => {
+    dispatch(Action.buyCurrentShare());
+  }
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Button);

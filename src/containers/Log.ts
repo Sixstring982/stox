@@ -3,7 +3,7 @@ import LogCard from "../components/LogCard.tsx";
 
 const mapStateToProps = (state) => ({
   color: "grey",
-  content: ["This is the first log line.", "This is the second.", "Third!"]
+  content: state.stox.log,
 });
 
 const mapDispatchToProps = (dispatch) => ({

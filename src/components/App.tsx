@@ -5,6 +5,7 @@ import SymbolList from "../containers/SymbolList.ts";
 import AdvanceButton from "../containers/AdvanceButton.ts";
 import MoneyLabel from "../containers/MoneyLabel.ts";
 import SharesLabel from "../containers/SharesLabel.ts";
+import BuyButton from "../containers/BuyButton.ts";
 
 interface AppPropTypes {
 
@@ -39,6 +40,9 @@ export default class App extends React.Component<AppPropTypes, any> {
                 <div className="row">
                   <div className="col s3">
                     <SharesLabel />
+                  </div>
+                  <div className="col s3">
+                    <BuyButton />
                   </div>
                 </div>
               </div>

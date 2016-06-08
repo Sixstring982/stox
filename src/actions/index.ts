@@ -13,3 +13,8 @@ export const setSelectedStock = (selected_stock: number) => ({
     type: SET_SELECTED_STOCK,
     selected_stock
 })
+
+export const BUY_CURRENT_SHARE: number = 4;
+export const buyCurrentShare = () => ({
+    type: BUY_CURRENT_SHARE,
+})

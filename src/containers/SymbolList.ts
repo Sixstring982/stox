@@ -7,10 +7,14 @@ const mapStateToProps = state => {
     const buttons = [];
 
     for (let i = 0; i < symbols.length; i++) {
+        const trend_color = symbols[i].delta >= 0 ? "green" : "red";
         buttons.push({
             icon: symbols[i].delta >= 0 ? "trending_up" : "trending_down",
+            icon_color: trend_color,
             title: `${symbols[i].symbol}: $${symbols[i].current_value.toFixed(2)}`,
             active: (i === state.stox.selected_stock),
+            line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)})`,
+            line_two_color: trend_color,
         });
     }
 

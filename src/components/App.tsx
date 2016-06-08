@@ -33,6 +33,14 @@ export default class App extends React.Component<AppPropTypes, any> {
             <Log />
           </div>
         </div>
+        <div className="row">
+          <div className="col s12">
+            <a href="https://github.com/Sixstring982/stox">
+              <i className="material-icons">code</i>
+            </a>
+            View on GitHub
+          </div>
+        </div>
       </div>
     );
   }

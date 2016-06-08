@@ -16,9 +16,6 @@ export default class App extends React.Component<AppPropTypes, any> {
           <div className="col s4">
             <div className="card white">
               <div className="card-content grey-text">
-                <span className="card-title">
-                  I'm a card!
-                </span>
                 <AdvanceButton />
                 <SymbolList />
               </div>

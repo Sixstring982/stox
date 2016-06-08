@@ -3,19 +3,31 @@ import Market from "../models/Market.ts";
 
 class State {
   private _market: Market;
-  private _selectedStock: number;
+  private _selected_stock: number;
 
-  constructor(market: Market, selectedStock: number) {
+  constructor(market: Market, selected_stock: number) {
     this._market = market;
-    this._selectedStock = selectedStock;
+    this._selected_stock = selected_stock;
+  }
+
+  get selected_stock(): number {
+    return this._selected_stock;
+  }
+
+  getSymbols(): Array<string> {
+    return this._market.getSymbols();
   }
 
   getCurrentValues(): Array<number> {
-    return this._market.getValues(this._selectedStock);
+    return this._market.getValues(this._selected_stock);
   }
 
   advance(): State {
-    return new State(this._market.advance(), this._selectedStock); 
+    return new State(this._market.advance(), this._selected_stock); 
+  }
+
+  setSelectedStock(selected_stock: number): State {
+    return new State(this._market, selected_stock);
   }
 }
 
@@ -25,6 +37,9 @@ export default (state: State = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case Action.ADVANCE: {
       return state.advance();
+    }
+    case Action.SET_SELECTED_STOCK: {
+      return state.setSelectedStock(action.selected_stock);
     }
     default: {
       return state;

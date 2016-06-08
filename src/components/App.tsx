@@ -1,6 +1,7 @@
 import * as React from "react";
 import Log from "../containers/Log.ts";
 import StockView from "../containers/StockView.ts";
+import SymbolList from "../containers/SymbolList.ts";
 import AdvanceButton from "../containers/AdvanceButton.ts";
 
 interface AppPropTypes {
@@ -19,6 +20,7 @@ export default class App extends React.Component<AppPropTypes, any> {
                   I'm a card!
                 </span>
                 <AdvanceButton />
+                <SymbolList />
               </div>
             </div>
           </div>

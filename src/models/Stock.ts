@@ -17,6 +17,10 @@ export default class Stock {
         }
     }
 
+    get symbol(): string {
+        return this._symbol;
+    }
+
     get value_count(): number {
         return this._values.length;
     }

@@ -5,11 +5,20 @@ export class State {
   private _market: Market;
   private _selected_stock: number;
   private _money: number;
+  private _shares: Array<number>;
 
-  constructor(market: Market, selected_stock: number, money: number) {
+  constructor(market: Market, selected_stock: number, money: number, shares: Array<number>) {
     this._market = market;
     this._selected_stock = selected_stock;
     this._money = money;
+    if (shares === null) {
+      this._shares = [];
+      for (let i = 0; i < this._market.size; i++) {
+        this._shares.push(0);
+      }
+    } else {
+      this._shares = shares;
+    }
   }
 
   get selected_stock(): number {
@@ -18,6 +27,14 @@ export class State {
 
   get money(): number {
     return this._money;
+  }
+
+  getCurrentShareCount(): number {
+    return this.getShareCount(this.selected_stock);
+  }
+
+  getShareCount(stock_idx: number): number {
+    return this._shares[stock_idx];
   }
 
   getCurrentSymbol(): string {
@@ -41,15 +58,15 @@ export class State {
   }
 
   advance(): State {
-    return new State(this._market.advance(), this._selected_stock, this._money);
+    return new State(this._market.advance(), this._selected_stock, this._money, this._shares);
   }
 
   setSelectedStock(selected_stock: number): State {
-    return new State(this._market, selected_stock, this._money);
+    return new State(this._market, selected_stock, this._money, this._shares);
   }
 }
 
-const INITIAL_STATE = new State(new Market(null), 0, 50.0);
+const INITIAL_STATE = new State(new Market(null), 0, 50.0, null);
 
 export default (state: State = INITIAL_STATE, action: any) => {
   switch (action.type) {

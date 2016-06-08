@@ -18,6 +18,10 @@ export default class Market {
         }
     }
 
+    get size(): number {
+        return this._stocks.length;
+    }
+
     getValues(stock_idx: number): Array<number> {
         const values = [];
         const stock = this._stocks[stock_idx];

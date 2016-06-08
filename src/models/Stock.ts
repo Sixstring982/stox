@@ -59,16 +59,21 @@ export default class Stock {
         const rnd = Math.random();
         let change_percent = 2.0 * VOLATILITY * rnd;
         if (change_percent > VOLATILITY) {
-            change_percent -= (2.0 * VOLATILITY); 
+            change_percent -= (2.0 * VOLATILITY);
         }
         const change_amount = old_price * change_percent;
 
+        /* Barycentric combination of the average and new value
+           to keep the new value from getting too low */
+        const bary_factor = 0.1;
+        let new_value = (old_price + change_amount) * (1.0 - bary_factor) +
+                        bary_factor * this._average;
+
         /* Truncate to two decimal points */
-        let new_value = old_price + change_amount;
         new_value *= 100.0;
         new_value = Math.round(new_value);
         new_value /= 100.0;
 
-        return new_value; 
+        return new_value;
     }
 }

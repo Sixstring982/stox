@@ -6,6 +6,7 @@ interface ListButton {
     title: string,
     line_two: string,
     line_two_color: string,
+    line_three: string,
     active: boolean,
 }
 
@@ -26,6 +27,7 @@ export default class ClickList extends React.Component<ClickListPropTypes, any> 
                    <span className="title">{b.title}</span>
                    <br />
                    <span className={`${b.line_two_color}-text`}>{b.line_two}</span>
+                   <span className="secondary-content">{b.line_three}</span>
                  </li>
              )}
            </ul>

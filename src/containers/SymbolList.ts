@@ -26,6 +26,7 @@ const mapStateToProps = state => {
             active,
             line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)}%)`,
             line_two_color,
+            line_three: `${state.stox.getShareCount(i)} shares`,
         });
     }
 

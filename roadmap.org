@@ -5,7 +5,7 @@ I Really want to practice testing (especially on the frontend) before
 I start working for someone who is going to expect this from me.
 
 
-** TODO Better formatting for SymbolList.
+** DONE Better formatting for SymbolList.
 
 SymbolList needs to look a little better, and should ideally contain
 the following information:
@@ -38,6 +38,9 @@ they do at the moment.
 The chart already looks great, but it could look a lot better.
 
 
-** TODO Buying/Selling
+** DONE Buying/Selling
 
 We can't buy or sell stuff. That's not going to work!
+
+
+** TODO Keep track of buying average for stocks, display when selling.

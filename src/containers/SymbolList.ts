@@ -19,6 +19,8 @@ const mapStateToProps = state => {
             icon_color = line_two_color = trend_color;
         }
 
+        const share_count = state.stox.getShareCount(i);
+
         buttons.push({
             icon: symbols[i].delta >= 0 ? "trending_up" : "trending_down",
             icon_color,
@@ -26,7 +28,7 @@ const mapStateToProps = state => {
             active,
             line_two: `${symbols[i].delta >= 0 ? "+" : ""}${symbols[i].delta.toFixed(2)} (${symbols[i].delta_percent.toFixed(2)}%)`,
             line_two_color,
-            line_three: `${state.stox.getShareCount(i)} shares`,
+            line_three: `${share_count} share${share_count == 1 ? "" : "s"}`,
         });
     }
 

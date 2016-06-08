@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Label from "../components/Label.tsx";
 
 const mapStateToProps = state => ({
-  text: `${state.stox.getCurrentShareCount()} shares`,
+  text: `${state.stox.getCurrentShareCount()} share${state.stox.getCurrentShareCount() == 1 ? "" : "s"}`,
   heading_size: 0
 });
 

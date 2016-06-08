@@ -1,22 +1,23 @@
 import * as Action from "../actions";
 import Market, { StockInfo } from "../models/Market.ts";
+import BuyAverage from "../models/BuyAverage.ts";
 
 export class State {
   private _market: Market;
   private _selected_stock: number;
   private _money: number;
-  private _shares: Array<number>;
+  private _shares: Array<BuyAverage>;
   private _log: Array<string>;
 
   constructor(market: Market, selected_stock: number,
-              money: number, shares: Array<number>, log: Array<string>) {
+              money: number, shares: Array<BuyAverage>, log: Array<string>) {
     this._market = market;
     this._selected_stock = selected_stock;
     this._money = money;
     if (shares === null) {
       this._shares = [];
       for (let i = 0; i < this._market.size; i++) {
-        this._shares.push(0);
+        this._shares.push(new BuyAverage(0, 0));
       }
     } else {
       this._shares = shares;
@@ -44,8 +45,12 @@ export class State {
     return this.getShareCount(this.selected_stock);
   }
 
+  getCurrentBuyAverage(): number {
+    return this._shares[this._selected_stock].average;
+  }
+
   getShareCount(stock_idx: number): number {
-    return this._shares[stock_idx];
+    return this._shares[stock_idx].size;
   }
 
   getCurrentSymbol(): string {
@@ -88,9 +93,9 @@ export class State {
       let new_shares = [];
       for (let i = 0; i < this._shares.length; i++) {
         if (i === this._selected_stock) {
-          new_shares.push(this._shares[i] + 1);
+          new_shares.push(this._shares[i].add(this.getCurrentValue()));
         } else {
-          new_shares.push(this._shares[i]);
+          new_shares.push(this._shares[i].clone());
         }
       }
       return new State(this._market, this._selected_stock,
@@ -107,9 +112,9 @@ export class State {
       let new_shares = [];
       for (let i = 0; i < this._shares.length; i++) {
         if (i === this._selected_stock) {
-          new_shares.push(this._shares[i] - 1);
+          new_shares.push(this._shares[i].remove(this.getCurrentValue()));
         } else {
-          new_shares.push(this._shares[i]);
+          new_shares.push(this._shares[i].clone());
         }
       }
       return new State(this._market, this._selected_stock,
